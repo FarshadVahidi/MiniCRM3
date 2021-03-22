@@ -39,7 +39,7 @@
         @if($user->photo)
             <div class="row">
                 <div class="col-12">
-                    <img src="{{ asset('public/image/'. $user->photo) }}" alt="{{ __('User Image') }}" class="img-thumbnail">
+                    <img src="{{ asset('storage/image/'. $user->photo) }}" alt="{{ __('User Image') }}" class="img-thumbnail">
                 </div>
             </div>
         @endif

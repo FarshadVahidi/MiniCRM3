@@ -14,7 +14,7 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -66,7 +66,8 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        if(!auth()->user()->hasPermission('companies-update'))
+        $user = auth()->user();
+        if(!$user->hasPermission('companies-update') or $user->company_id != $company->id)
             abort(403);
         return View::make('User.company.edit', compact('company'));
     }
