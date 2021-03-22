@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -59,14 +60,22 @@ class LaratrustSeeder extends Seeder
 
             // Attach all permissions to the role
             $role->permissions()->sync($permissions);
-
+            $faker = \Faker\Factory::create();
+            $company = Company::first();
             if (Config::get('laratrust_seeder.create_users')) {
                 $this->command->info("Creating '{$key}' user");
                 // Create default user for each role
                 $user = \App\Models\User::create([
                     'name' => ucwords(str_replace('_', ' ', $key)),
+                    'lastName'  => ucwords(str_replace('_', ' ', $key)),
                     'email' => $key.'@app.com',
-                    'password' => bcrypt('password')
+                    'phone' => $faker->phoneNumber,
+                    'photo' => $faker->image('public/storage/image', 300, 300, null, null),
+                    'company_id'    => $company->id,
+                    'company_name'  => $company->name,
+                    'role_id'   =>  $role->id,
+                    'role_name' => $role->name,
+                    'password' => bcrypt('password'),
                 ]);
                 $user->attachRole($role);
             }
@@ -91,7 +100,7 @@ class LaratrustSeeder extends Seeder
         if (Config::get('laratrust_seeder.truncate_tables')) {
             DB::table('roles')->truncate();
             DB::table('permissions')->truncate();
-            
+
             if (Config::get('laratrust_seeder.create_users')) {
                 $usersTable = (new \App\Models\User)->getTable();
                 DB::table($usersTable)->truncate();
