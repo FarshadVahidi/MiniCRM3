@@ -15,6 +15,30 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
+                    @if(auth()->user()->hasRole('user'))
+
+                        <x-jet-nav-link href="{{ route('users.user.show', auth()->user()->id) }}" :active="request()->routeIs('users.user.show')">
+                            {{ __('Personal Info') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('users.company.show', auth()->user()->company_id) }}" :active="request()->routeIs('users.company.show')">
+                            {{ __('Company Info') }}
+                        </x-jet-nav-link>
+
+                        @can('users-create')
+                            <x-jet-nav-link href="{{ route('users.user.create') }}" :active="request()->routeIs('users.user.create')">
+                                {{ __('New Staff') }}
+                            </x-jet-nav-link>
+                        @endif
+
+                        @can('users-read')
+                            <x-jet-nav-link href="{{ route('users.user.index') }}" :active="request()->routeIs('users.user.index')">
+                            {{ __('Company Staffs') }}
+                            </x-jet-nav-link>
+                        @endif
+
+                    @endif
                 </div>
             </div>
 
