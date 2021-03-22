@@ -43,7 +43,7 @@
                             <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                                     <div>
                                         <p><a class="btn btn-primary"
-                                              href="{{ route('users.user.show', $user) }}">{{ __('Show') }}</a></p>
+                                              href="{{ route('users.info.show', $user->id) }}">{{ __('Show') }}</a></p>
                                     </div>
                             </div>
                         </td>

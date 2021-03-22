@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class ProfileController extends Controller
 {
@@ -42,11 +44,14 @@ class ProfileController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        if($user->company_id != auth()->user()->company_id)
+            abort(403);
+        return View::make('User.profile.show', compact('user'));
     }
 
     /**

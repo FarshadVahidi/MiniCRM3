@@ -20,7 +20,9 @@ class UserController extends Controller
     public function index()
     {
         $tmp = auth()->user()->company_id;
-        $users = User::where('company_id', '=', $tmp)->get();
+        $users = User::where('company_id', '=', $tmp)
+                        ->where('id', '<>', auth()->user()->id)
+                        ->get();
         return View::make('User.user.index', compact('users'));
     }
 
