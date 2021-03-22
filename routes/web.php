@@ -29,12 +29,12 @@ Route::group(['middleware' => 'auth'], function(){
    });
 
     Route::group(['middleware' => 'role:administrator', 'prefix' => 'admin', 'as' => 'admins.'], function(){
-        Route::resource('user', App\Http\Controllers\Admin\AdminController::class);
+        Route::resource('user', App\Http\Controllers\Admin\UserController::class);
         Route::resource('company', App\Http\Controllers\Admin\CompanyController::class);
     });
 
     Route::group(['middleware' => 'role:superadministrator', 'prefix' => 'super', 'as' => 'supers.'], function(){
-        Route::resource('user', App\Http\Controllers\Super\SuperController::class);
+        Route::resource('user', App\Http\Controllers\Super\UserController::class);
         Route::resource('company' , App\Http\Controllers\Super\CompanyController::class);
     });
 });
