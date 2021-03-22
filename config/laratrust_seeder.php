@@ -24,7 +24,7 @@ return [
         ],
         'user' => [
             'users' => '',
-            'companies' => 'r',
+            'companies' => 'r,u',
             'profile' => 'r,u',
         ],
         'role_name' => [
