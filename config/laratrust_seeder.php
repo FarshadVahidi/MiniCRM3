@@ -23,12 +23,7 @@ return [
             'profile' => 'c,r,u',
         ],
         'user' => [
-            'users' => 'r,u',
-            'profile' => 'r,u',
         ],
-        'role_name' => [
-            'module_1_name' => 'c,r,u,d',
-        ]
     ],
 
     'permissions_map' => [
