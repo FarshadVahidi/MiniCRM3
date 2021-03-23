@@ -64,9 +64,6 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        $user = auth()->user();
-        if($user->company_id != $company->id)
-            abort(403);
         return View::make('Admin.company.edit', compact('company'));
     }
 
