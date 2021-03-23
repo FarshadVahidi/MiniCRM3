@@ -12,9 +12,11 @@ class Company extends Model
     protected $table = "companies";
     protected $guarded = [];
 
-    public function staffs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function user()
     {
         return $this->hasMany(User::class);
     }
+
+
 
 }

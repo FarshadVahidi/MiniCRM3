@@ -105,7 +105,7 @@ class CompanyController extends Controller
             return $this->index();
         }catch( Exception $e){
             Session::flash('alert', 'You Can Not Delete This Client');
-            return $this->index(0);
+            return $this->index();
         }
 
     }

@@ -27,6 +27,7 @@
                 <p><strong>{{ __('Company Name: ') }}</strong> {{ $company->name }}</p>
                 <p><strong>{{ __('Email: ') }}</strong> {{ $company->email }}</p>
                 <p><strong>{{ __('Website: ') }}</strong> {{ $company->website }}</p>
+                <p><a href="{{ route('admins.info.show', $company->id) }}" class="btn btn-primary">{{ __('List Of Staff') }}</a></p>
             </div>
         </div>
 
