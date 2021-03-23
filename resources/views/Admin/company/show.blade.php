@@ -24,7 +24,7 @@
 
         <div class="row mt-3">
             <div class="col-12">
-                <p><strong>{{ __('First Name: ') }}</strong> {{ $company->name }}</p>
+                <p><strong>{{ __('Company Name: ') }}</strong> {{ $company->name }}</p>
                 <p><strong>{{ __('Email: ') }}</strong> {{ $company->email }}</p>
                 <p><strong>{{ __('Website: ') }}</strong> {{ $company->website }}</p>
             </div>

@@ -46,12 +46,17 @@
                     @if(auth()->user()->hasRole('administrator'))
 
                         <x-jet-nav-link href="{{ route('admins.user.show', auth()->user()->id) }}"
-                                        :active="request()->routeIs('users.user.show')">
+                                        :active="request()->routeIs('admins.user.show')">
                             {{ __('Personal Info') }}
                         </x-jet-nav-link>
 
                         <x-jet-nav-link href="{{ route('admins.company.show', auth()->user()->company_id) }}"
-                                        :active="request()->routeIs('users.company.show')">
+                                        :active="request()->routeIs('admins.company.show')">
+                            {{ __('Company Info') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('admins.company.index') }}"
+                                        :active="request()->routeIs('admins.company.index')">
                             {{ __('Company Info') }}
                         </x-jet-nav-link>
                     @endif

@@ -14,11 +14,13 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $companies = Company::where('id', '<>', auth()->user()->company_id)
+                                ->get();
+        return View::make('Admin.company.index', compact('companies'));
     }
 
     /**
