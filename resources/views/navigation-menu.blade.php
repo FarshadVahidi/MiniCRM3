@@ -57,7 +57,12 @@
 
                         <x-jet-nav-link href="{{ route('admins.company.index') }}"
                                         :active="request()->routeIs('admins.company.index')">
-                            {{ __('Company Info') }}
+                            {{ __('Company List') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('admins.info.create') }}"
+                                        :active="request()->routeIs('admins.info.create')">
+                            {{ __('Add New User') }}
                         </x-jet-nav-link>
                     @endif
                 </div>

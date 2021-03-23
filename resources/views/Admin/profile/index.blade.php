@@ -22,13 +22,6 @@
 
     @section('mainContent')
 
-        @can('profile-create')
-            <div class="col-12 m-3">
-                <a type="button" class="btn btn-success"
-                   href="{{ route('admins.info.create') }}">{{ __('New Staff') }}</a>
-            </div>
-        @endif
-
         <div>
             <table class="table table-bordered data-table" id="datatable">
                 <thead>
@@ -51,7 +44,7 @@
                             <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                                 <div>
                                     <p><a class="btn btn-primary"
-                                          href="{{ route('users.info.show', $user->id) }}">{{ __('Show') }}</a></p>
+                                          href="{{ route('admins.info.show', $user->id) }}">{{ __('Show') }}</a></p>
                                 </div>
                             </div>
                         </td>
