@@ -62,11 +62,6 @@
                 </div>
 
                 <div class="custom-control custom-checkbox col-md-6">
-                    <input type="checkbox" class="custom-control-input" name="users-create">
-                    <label class="custom-control-label">{{ __('Permission: users-create') }}</label>
-                </div>
-
-                <div class="custom-control custom-checkbox col-md-6">
                     <input type="checkbox" class="custom-control-input" name="profile-create">
                     <label class="custom-control-label">{{ __('Permission: profile-create') }}</label>
                 </div>

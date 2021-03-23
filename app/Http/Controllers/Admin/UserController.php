@@ -15,11 +15,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return View::make('Admin.user.index', compact('users'));
     }
 
     /**
