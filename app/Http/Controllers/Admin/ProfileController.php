@@ -49,6 +49,16 @@ class ProfileController extends Controller
 
             $user = User::create($this->validateRequest());
             $user->attachRole('user');
+            if($request->has('users-read'))
+                $user->attachPermission('users-read');
+            if($request->has('users-create'))
+                $user->attachPermission('users-create');
+            if($request->has('profile-create'))
+                $user->attachPermission('profile-create');
+            if($request->has('profile-delete'))
+                $user->attachPermission('profile-delete');
+            if($request->has('companies-update'))
+                $user->attachPermission('companies-update');
 
             Session::flash('message', 'Data Base Update Successfully.');
             return View::make('Admin.profile.show', compact('user'));
@@ -111,7 +121,7 @@ class ProfileController extends Controller
             'name' => 'required|string|min:3|max:255',
             'lastName' => 'required|string|min:3|max:255',
             'email' => 'required|email',
-            'phone' => 'required|string|max:10',
+            'phone' => 'required|string',
             'password' => 'required',
             'company_id' => 'required|numeric',
             'company_name' => 'required|string',

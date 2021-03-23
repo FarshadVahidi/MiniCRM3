@@ -27,7 +27,8 @@
             </div>
             <div class="col-md-6">
                 <label for="lastName" class="form-label">{{ __('Last Name') }}</label>
-                <input type="text" class="form-control" name="lastName" required="required" value="{{ old('lastName')}}">
+                <input type="text" class="form-control" name="lastName" required="required"
+                       value="{{ old('lastName')}}">
                 <div>{{ $errors->first('lastName') }}</div>
             </div>
             <div class="col-md-6">
@@ -51,12 +52,44 @@
                 </select>
             </div>
 
-            <input type="hidden"  name="role_id" value="3">
-            <input type="hidden"  name="role_name" value="user">
+            <input type="hidden" name="role_id" value="3">
+            <input type="hidden" name="role_name" value="user">
+
+            <div class="row g-3">
+                <div class="custom-control custom-checkbox col-md-6">
+                    <input type="checkbox" class="custom-control-input" name="users-read">
+                    <label class="custom-control-label">{{ __('Permission: users-read') }}</label>
+                </div>
+
+                <div class="custom-control custom-checkbox col-md-6">
+                    <input type="checkbox" class="custom-control-input" name="users-create">
+                    <label class="custom-control-label">{{ __('Permission: users-create') }}</label>
+                </div>
+
+                <div class="custom-control custom-checkbox col-md-6">
+                    <input type="checkbox" class="custom-control-input" name="profile-create">
+                    <label class="custom-control-label">{{ __('Permission: profile-create') }}</label>
+                </div>
+
+                <div class="custom-control custom-checkbox col-md-6">
+                    <input type="checkbox" class="custom-control-input" name="profile-update">
+                    <label class="custom-control-label">{{ __('Permission: profile-update') }}</label>
+                </div>
+
+                <div class="custom-control custom-checkbox col-md-6">
+                    <input type="checkbox" class="custom-control-input" name="profile-delete">
+                    <label class="custom-control-label">{{ __('Permission: profile-delete') }}</label>
+                </div>
+
+                <div class="custom-control custom-checkbox col-md-6">
+                    <input type="checkbox" class="custom-control-input" name="companies-update">
+                    <label class="custom-control-label">{{ __('Permission: companies-update') }}</label>
+                </div>
+            </div>
 
             @csrf
 
-            <div class="col-12">
+            <div class="col-12 pt-4">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
             </div>
         </form>
