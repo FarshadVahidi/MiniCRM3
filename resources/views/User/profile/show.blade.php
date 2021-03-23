@@ -39,26 +39,26 @@
                 </div>
             </div>
         @endif
-    <div class="mt-3">
-        @can('profile-update')
-            <div class="col-12">
-                <a type="button" class="btn btn-success"
-                   href="{{ route('users.info.edit', $user->id) }}">{{ __('Edit') }}</a>
-            </div>
-        @endif
 
-        @can('profile-delete')
-            <div class="col-12 mt-3">
-                <form method="POST" action="{{ route('users.info.destroy', $user->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" onclick="return confirm('Are You Sure? you want to DELETE this user')"
-                            class="btn btn-danger">{{ __('Delete') }}
-                    </button>
-                </form>
-            </div>
-        @endif
-    </div>
+        <div class="mt-3">
+            @can('profile-update')
+                <div class="col-12">
+                    <a type="button" class="btn btn-success"
+                       href="{{ route('users.info.edit', $user) }}">{{ __('Edit') }}</a>
+                </div>
+            @endif
 
+            @can('profile-delete')
+                <div class="col-12 mt-3">
+                    <form method="POST" action="{{ route('users.info.destroy', $user->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Are You Sure? you want to DELETE this user')"
+                                class="btn btn-danger">{{ __('Delete') }}
+                        </button>
+                    </form>
+                </div>
+            @endif
+        </div>
     @endsection
 </x-app-layout>
