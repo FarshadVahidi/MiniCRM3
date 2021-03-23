@@ -27,8 +27,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastName',
         'email',
         'password',
+        'phone',
+        'photo',
+        'company_id',
+        'company_name',
+        'role_id',
+        'role_name',
     ];
 
     /**
@@ -60,4 +67,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function company()
+    {
+        $this->belongsTo(Company::class);
+    }
 }
