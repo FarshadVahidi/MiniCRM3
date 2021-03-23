@@ -52,9 +52,6 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        if($id != auth()->user()->company_id)
-            abort(403);
-
         $company = Company::findOrFail($id);
         return View::make('Admin.company.show', compact('company'));
     }
