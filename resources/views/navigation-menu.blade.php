@@ -28,9 +28,9 @@
                             {{ __('Company Info') }}
                         </x-jet-nav-link>
 
-                        @can('users-create')
-                            <x-jet-nav-link href="{{ route('users.user.create') }}"
-                                            :active="request()->routeIs('users.user.create')">
+                        @can('profile-create')
+                            <x-jet-nav-link href="{{ route('users.info.create') }}"
+                                            :active="request()->routeIs('users.info.create')">
                                 {{ __('New Staff') }}
                             </x-jet-nav-link>
                         @endif
