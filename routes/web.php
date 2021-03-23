@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'role:administrator', 'prefix' => 'admin', 'as' => 'admins.'], function(){
         Route::resource('user', App\Http\Controllers\Admin\UserController::class);
         Route::resource('company', App\Http\Controllers\Admin\CompanyController::class);
+        Route::resource('info', App\Http\Controllers\Admin\ProfileController::class);
     });
 
     Route::group(['middleware' => 'role:superadministrator', 'prefix' => 'super', 'as' => 'supers.'], function(){
