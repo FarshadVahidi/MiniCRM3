@@ -42,6 +42,10 @@
             </div>
         @endif
 
+        @foreach($permissions as $permission)
+            {{ $permission }}
+        @endforeach
+
         <div class="col-12 mt-3">
             <a type="button" class="btn btn-success" href="{{ route('admins.user.edit', $user->id) }}">{{ __('Edit') }}</a>
         </div>

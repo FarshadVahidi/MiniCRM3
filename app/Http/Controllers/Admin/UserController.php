@@ -52,7 +52,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return View::make('Admin.user.show', compact('user'));
+        $permissions = $user->userPermissions;
+        return View::make('Admin.user.show', compact('user', 'permissions'));
     }
 
     /**
