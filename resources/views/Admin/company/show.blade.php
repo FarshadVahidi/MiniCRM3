@@ -43,5 +43,19 @@
                 <a type="button" class="btn btn-success" href="{{ route('admins.company.edit', $company->id) }}">{{ __('Edit') }}</a>
             </div>
         @endif
+
+        @can('companies-delete')
+            <div class="col-12 mt-3">
+                <div class="col-12 mt-3">
+                    <form method="POST" action="{{ route('admins.company.destroy', $company->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Are You Sure? you want to DELETE this Client')"
+                                class="btn btn-danger">{{ __('Delete') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @endif
     @endsection
 </x-app-layout>

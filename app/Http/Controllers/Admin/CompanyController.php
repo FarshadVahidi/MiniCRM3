@@ -26,22 +26,25 @@ class CompanyController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+        return View::make('Admin.company.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function store(Request $request)
     {
-        //
+        $company = Company::create($this->validateRequest());
+        $this->storeImage($company);
+        Session::flash('message', 'Data Base Update Successfully.');
+        return $this->index();
     }
 
     /**
@@ -92,11 +95,19 @@ class CompanyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function destroy($id)
+    public function destroy(Company $company)
     {
-        //
+        try{
+            $company->delete();
+            Session::flash('alert', 'Client Deleted Successfully.');
+            return $this->index();
+        }catch( Exception $e){
+            Session::flash('alert', 'You Can Not Delete This Client');
+            return $this->index(0);
+        }
+
     }
 
     private function validateRequest()
