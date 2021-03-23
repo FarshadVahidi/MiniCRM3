@@ -21,6 +21,14 @@
     @endsection
 
     @section('mainContent')
+
+            @can('profile-create')
+                <div class="col-12 m-3">
+                    <a type="button" class="btn btn-success"
+                       href="{{ route('users.info.create') }}">{{ __('New Staff') }}</a>
+                </div>
+            @endif
+
         <div>
             <table class="table table-bordered data-table" id="datatable">
                 <thead>
