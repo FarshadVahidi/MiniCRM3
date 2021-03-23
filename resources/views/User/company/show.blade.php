@@ -22,11 +22,6 @@
         </div>
         <br>
 
-    @can('companies-update')
-        <div class="col-12">
-            <a type="button" class="btn btn-success" href="{{ route('users.company.edit', $company->id) }}">{{ __('Edit') }}</a>
-        </div>
-    @endif
         <div class="row mt-3">
             <div class="col-12">
                 <p><strong>{{ __('First Name: ') }}</strong> {{ $company->name }}</p>
@@ -43,5 +38,10 @@
             </div>
         @endif
 
+        @can('companies-update')
+            <div class="col-12 mt-3">
+                <a type="button" class="btn btn-success" href="{{ route('users.company.edit', $company->id) }}">{{ __('Edit') }}</a>
+            </div>
+        @endif
     @endsection
 </x-app-layout>

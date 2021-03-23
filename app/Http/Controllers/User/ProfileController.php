@@ -98,11 +98,21 @@ class ProfileController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function destroy($id)
     {
-        //
+        $authUser = auth()->user();
+        $user = User::findOrFail($id);
+        if($user->company_id != $authUser->company_id)
+            abort(403);
+        $user->delete();
+        Session::flash('alert', 'Staff Deleted From Data Base');
+
+        $users = User::where('company_id', '=', $authUser->company_id)
+            ->where('id', '<>', auth()->user()->id)
+            ->get();
+        return View::make('User.user.index', compact('users'));
     }
 
     private function validateRequest()
